@@ -6,17 +6,13 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.ktx.BuildConfig
 import es.usj.poppedcorn.data.MovieApi
 import es.usj.poppedcorn.model.Movie
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -56,7 +52,6 @@ class SplashActivity : AppCompatActivity() {
             }
         })
     }
-
     private fun proceedToNextActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashActivity, MovieListActivity::class.java)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btneditmovie"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -38,8 +39,18 @@
                 android:layout_height="101dp"
                 android:padding="8dp"
                 android:textSize="14sp" />
+
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEditMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
 
 </LinearLayout>

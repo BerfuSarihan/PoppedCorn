@@ -20,9 +20,7 @@
         <ListView
             android:id="@+id/listViewMovies"
             android:layout_width="match_parent"
-            android:layout_height="500dp">
-
-        </ListView>
+            android:layout_height="500dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton3"

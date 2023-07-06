@@ -21,7 +21,6 @@ class ViewMovieActivity : AppCompatActivity() {
             displayMovieDetails(movie)
         }
     }
-
     private fun getMovieDetails(movieId: String?): Movie? {
         val movies = SingletonMovieData.getInstance().getResponseMovies()
         return movies?.find { it.movieId == movieId }

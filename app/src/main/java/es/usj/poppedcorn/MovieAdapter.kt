@@ -1,10 +1,12 @@
 package es.usj.poppedcorn
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.TextView
 import es.usj.poppedcorn.model.Movie
 class MovieAdapter(private val context: Context) : BaseAdapter() {
@@ -24,10 +26,22 @@ class MovieAdapter(private val context: Context) : BaseAdapter() {
             viewHolder = view.tag as ViewHolder
         }
 
-        val movie = filteredMovies?.get(position)
-        viewHolder.titleTextView.text = movie?.title
-        viewHolder.descriptionTextView.text = movie?.description
+        val movie = getItem(position) as Movie
+        viewHolder.titleTextView.text = movie.title
+        viewHolder.descriptionTextView.text = movie.description
 
+        view.setOnClickListener {
+            val intent = Intent(context, ViewMovieActivity::class.java)
+            intent.putExtra("movieId", movie.movieId)
+            context.startActivity(intent)
+        }
+
+        // Set click listener for the edit button
+        viewHolder.btnEditMovie.setOnClickListener {
+            val intent = Intent(context, EditMovieActivity::class.java)
+            intent.putExtra("movieId", movie.movieId)
+            context.startActivity(intent)
+        }
         return view
     }
 
@@ -57,5 +71,6 @@ class MovieAdapter(private val context: Context) : BaseAdapter() {
     private class ViewHolder(view: View) {
         val titleTextView: TextView = view.findViewById(R.id.textViewTitle)
         val descriptionTextView: TextView = view.findViewById(R.id.textViewDescription)
+        val btnEditMovie: Button = view.findViewById(R.id.btnEditMovie)
     }
 }
