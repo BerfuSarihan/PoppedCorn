@@ -2,16 +2,19 @@ package es.usj.poppedcorn
 
 import es.usj.poppedcorn.model.Movie
 
-
 class SingletonMovieData private constructor() {
-    private var responseMovies: List<Movie>? = null
+    private var responseMovies: MutableList<Movie>? = null
 
-    fun setResponseMovies(movies: List<Movie>?) {
+    fun setResponseMovies(movies: MutableList<Movie>?) {
         responseMovies = movies
     }
 
-    fun getResponseMovies(): List<Movie>? {
+    fun getResponseMovies(): MutableList<Movie>? {
         return responseMovies
+    }
+
+    fun addMovie(movie: Movie) {
+        responseMovies?.add(movie)
     }
 
     companion object {

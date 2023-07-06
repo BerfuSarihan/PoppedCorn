@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import es.usj.poppedcorn.model.Movie
-
 class MovieAdapter(private val context: Context) : BaseAdapter() {
     private val movies: List<Movie>? = SingletonMovieData.getInstance().getResponseMovies()
     private var filteredMovies: List<Movie>? = movies
@@ -25,9 +24,9 @@ class MovieAdapter(private val context: Context) : BaseAdapter() {
             viewHolder = view.tag as ViewHolder
         }
 
-        val movie = getItem(position) as Movie
-        viewHolder.titleTextView.text = movie.title
-        viewHolder.descriptionTextView.text = movie.description
+        val movie = filteredMovies?.get(position)
+        viewHolder.titleTextView.text = movie?.title
+        viewHolder.descriptionTextView.text = movie?.description
 
         return view
     }

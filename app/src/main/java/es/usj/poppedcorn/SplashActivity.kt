@@ -6,12 +6,17 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ktx.BuildConfig
 import es.usj.poppedcorn.data.MovieApi
 import es.usj.poppedcorn.model.Movie
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity() {
 
@@ -33,7 +38,9 @@ class SplashActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
                 if (response.isSuccessful) {
                     val movies = response.body()
-                    SingletonMovieData.getInstance().setResponseMovies(movies)
+                    if (movies != null) {
+                        SingletonMovieData.getInstance().setResponseMovies(movies.toMutableList())
+                    }
                     proceedToNextActivity()
                 } else {
                     Toast.makeText(this@SplashActivity, "Failed to load data from API", Toast.LENGTH_SHORT).show()

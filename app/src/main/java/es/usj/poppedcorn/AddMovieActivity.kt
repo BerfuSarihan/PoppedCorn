@@ -1,15 +1,13 @@
 package es.usj.poppedcorn
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import es.usj.poppedcorn.databinding.ActivityAddMovieBinding
 import es.usj.poppedcorn.data.MovieApi
+import es.usj.poppedcorn.databinding.ActivityAddMovieBinding
 import es.usj.poppedcorn.model.Movie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AddMovieActivity : AppCompatActivity() {
 
@@ -21,7 +19,6 @@ class AddMovieActivity : AppCompatActivity() {
         view = ActivityAddMovieBinding.inflate(layoutInflater)
         setContentView(view.root)
 
-        apiService = RetrofitInstance.retrofit.create(MovieApi::class.java)
 
         val btnSaveMovie: Button = view.btnSaveMovie
         btnSaveMovie.setOnClickListener {
@@ -52,26 +49,20 @@ class AddMovieActivity : AppCompatActivity() {
 
         val movie = Movie(movieId = id, title = title, description = description, year = year, rating = rating)
 
-        val call = apiService.addMovie(movie)
+        val singleton = SingletonMovieData.getInstance()
+        val movies = singleton.getResponseMovies()
 
-        call.enqueue(object : Callback<Movie> {
-            override fun onResponse(call: Call<Movie>, response: Response<Movie>)
-            {
-                if (response.isSuccessful)
-                {
-                    Toast.makeText(this@AddMovieActivity, "Movie added successfully", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-                else
-                {
-                    Toast.makeText(this@AddMovieActivity, "Failed to add movie", Toast.LENGTH_SHORT).show()
-                }
+        if (movies != null) {
+            if (movies.any { it.title == title }) {
+                // Movie with the same title already exists
+                Toast.makeText(this, "$title already exists", Toast.LENGTH_SHORT).show()
+            } else {
+                singleton.addMovie(movie)
+                Toast.makeText(this, "$title added successfully", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MovieListActivity::class.java)
+                startActivity(intent)
             }
+        }
 
-            override fun onFailure(call: Call<Movie>, t: Throwable)
-            {
-                Toast.makeText(this@AddMovieActivity, "Failed to add movie", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 }

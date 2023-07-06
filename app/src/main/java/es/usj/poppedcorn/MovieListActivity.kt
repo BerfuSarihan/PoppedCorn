@@ -3,9 +3,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ListView
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import es.usj.poppedcorn.data.MovieApi
 import es.usj.poppedcorn.databinding.ActivityMovieListBinding
 import es.usj.poppedcorn.model.Movie
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MovieListActivity : AppCompatActivity() {
 
