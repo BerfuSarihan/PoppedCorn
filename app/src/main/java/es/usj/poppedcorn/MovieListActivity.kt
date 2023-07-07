@@ -26,7 +26,15 @@ class MovieListActivity : AppCompatActivity() {
             val selectedMovie = movieAdapter.getItem(position) as? Movie
             if (selectedMovie != null) {
                 val intent = Intent(this, ViewMovieActivity::class.java)
-                intent.putExtra("movieId", selectedMovie.movieId)
+                intent.putExtra("movieId", selectedMovie.movieId) // Pass the movieId to the intent
+                startActivity(intent)
+            }
+        }
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val selectedMovie = movieAdapter.getItem(position) as? Movie
+            if (selectedMovie != null) {
+                val intent = Intent(this, EditMovieActivity::class.java)
+                intent.putExtra("movie", selectedMovie) // Pass the selected movie object
                 startActivity(intent)
             }
         }
@@ -54,4 +62,8 @@ class MovieListActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+}
+
+private fun Intent.putExtra(s: String, selectedMovie: Movie) {
+
 }

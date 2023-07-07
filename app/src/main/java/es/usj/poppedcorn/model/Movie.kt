@@ -7,7 +7,6 @@ data class Movie(
     var rating: Double? = null,
     var director: String? = null,
     var votes: Int? = null,
-    var actors: List<String>? = null
 )
 
 

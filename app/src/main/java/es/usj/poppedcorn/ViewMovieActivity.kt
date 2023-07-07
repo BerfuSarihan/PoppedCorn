@@ -14,7 +14,7 @@ class ViewMovieActivity : AppCompatActivity() {
         view = ActivityViewMovieBinding.inflate(layoutInflater)
         setContentView(view.root)
 
-        val movieId = intent.getStringExtra("movieId")
+        val movieId = intent?.getStringExtra("movieId")
 
         val movie = getMovieDetails(movieId)
         if (movie != null) {
@@ -27,12 +27,11 @@ class ViewMovieActivity : AppCompatActivity() {
     }
 
     private fun displayMovieDetails(movie: Movie) {
-        view.textViewTitle.text = movie.title
+        view.textViewTitle1.text = movie.title
         view.textViewYear.text = "Year: ${movie.year}"
         view.textViewDirector.text = "Director: ${movie.director}"
         view.textViewRating.text = "Rating: ${movie.rating}"
         view.textViewVotes.text = "Votes: ${movie.votes}"
-        view.textViewActors.text = "Actors: ${movie.actors?.joinToString(", ")}"
         view.textViewDescription1.text = movie.description
     }
 }

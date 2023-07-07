@@ -1,11 +1,13 @@
 package es.usj.poppedcorn
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import es.usj.poppedcorn.databinding.ActivityEditMovieBinding
 
 class EditMovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_movie)
-    }
-}
+        val view = ActivityEditMovieBinding.inflate(layoutInflater)
+        setContentView(view.root)
+}}

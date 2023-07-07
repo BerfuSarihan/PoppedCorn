@@ -15,14 +15,29 @@
         android:src="@drawable/_90630" />
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/tvAppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewLogo"
         android:layout_centerHorizontal="true"
         android:paddingTop="16dp"
-        android:text="ABS Movie"
+        android:text="Popped Corn"
         android:textColor="#070707"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvwarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAppTitle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="166dp"
+        android:foregroundGravity="center_vertical"
+        android:gravity="center"
+        android:text="&quot;Don't forget to eat the single popped corn that fell before the movie started&quot;" />
 
 </RelativeLayout>

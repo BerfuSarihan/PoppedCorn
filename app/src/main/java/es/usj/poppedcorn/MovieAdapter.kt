@@ -9,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
 import es.usj.poppedcorn.model.Movie
+
 class MovieAdapter(private val context: Context) : BaseAdapter() {
     private val movies: List<Movie>? = SingletonMovieData.getInstance().getResponseMovies()
     private var filteredMovies: List<Movie>? = movies
@@ -69,7 +70,7 @@ class MovieAdapter(private val context: Context) : BaseAdapter() {
     }
 
     private class ViewHolder(view: View) {
-        val titleTextView: TextView = view.findViewById(R.id.textViewTitle)
+        val titleTextView: TextView = view.findViewById(R.id.tvAppTitle)
         val descriptionTextView: TextView = view.findViewById(R.id.textViewDescription)
         val btnEditMovie: Button = view.findViewById(R.id.btnEditMovie)
     }

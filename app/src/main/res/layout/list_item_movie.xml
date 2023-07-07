@@ -5,6 +5,7 @@
     android:id="@+id/btneditmovie"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginRight="12dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -26,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewTitle"
+                android:id="@+id/tvAppTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -48,9 +49,9 @@
         android:id="@+id/btnEditMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:layout_gravity="center"
+        android:layout_gravity="right|top"
         android:layout_marginTop="8dp"
-        />
+        android:insetRight="2dp"
+        android:text="Edit" />
 
 </LinearLayout>
